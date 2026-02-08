@@ -1,20 +1,54 @@
 <!DOCTYPE html>
-<html lang="th">
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <title>เลือกตัวละคร</title>
-  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .container {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    .char {
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .char img {
+      width: 150px;
+      border: 3px solid transparent;
+      border-radius: 10px;
+    }
+
+    .char:hover img {
+      border-color: #00aaff;
+    }
+  </style>
 </head>
+
 <body>
+  <h2 style="text-align:center;">เลือกตัวละคร</h2>
 
-  <h1>เลือกตัวละคร</h1>
-  <p>คลิกเลือกตัวละครของคุณ</p>
+  <div class="container">
+    <div class="char" onclick="selectChar('ชาย')">
+      <img src="assets/male.png" alt="ชาย">
+      <p>ชาย</p>
+    </div>
 
-  <div class="character-box">
-    <img src="assets/male.png" alt="male" onclick="selectCharacter('male')">
-    <img src="assets/female.png" alt="female" onclick="selectCharacter('female')">
+    <div class="char" onclick="selectChar('หญิง')">
+      <img src="assets/female.png" alt="หญิง">
+      <p>หญิง</p>
+    </div>
   </div>
 
-  <script src="js/character.js"></script>
+  <script>
+    function selectChar(char) {
+      localStorage.setItem("character", char);
+      window.location.href = "home.html";
+    }
+  </script>
 </body>
 </html>

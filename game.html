@@ -1,47 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>ด่าน 1</title>
+<meta charset="utf-8">
+<title>ด่าน 1</title>
+
+<style>
+  .block {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #000;
+    width: 200px;
+    cursor: grab;
+  }
+  #drop {
+    border: 2px dashed #000;
+    padding: 20px;
+    min-height: 80px;
+  }
+</style>
 </head>
+
 <body>
-  <h2>ด่าน 1</h2>
+<h2>ด่าน 1</h2>
 
-  <p>โจทย์: แสดงคำว่า <b>HELLO</b></p>
+<p>
+โจทย์: ถ้าอุณหภูมิ > 30 และแสง > 60 → พัดลมหมุน
+</p>
 
-  <select id="block">
-    <option value="">-- เลือกบล็อก --</option>
-    <option value="HELLO">แสดง HELLO</option>
-    <option value="HI">แสดง HI</option>
-  </select>
+<h3>บล็อกคำสั่ง</h3>
+<div class="block" draggable="true" ondragstart="drag(event)"
+     data-type="temp">อุณหภูมิ > 30</div>
 
-  <button onclick="run()">รันโค้ด</button>
+<div class="block" draggable="true" ondragstart="drag(event)"
+     data-type="light">แสง > 60</div>
 
-  <h3>ผลลัพธ์:</h3>
-  <div id="output"></div>
+<h3>ลากบล็อกมาวางที่นี่</h3>
+<div id="drop" ondrop="drop(event)" ondragover="allow(event)">
+</div>
 
-  <script>
-    function run() {
-      const block = document.getElementById("block").value;
-      const output = document.getElementById("output");
+<br>
+<button onclick="run()">รันโปรแกรม</button>
 
-      output.innerText = block;
+<h3 id="result"></h3>
 
-      if (block === "HELLO") {
-        alert("🎉 ผ่านด่าน 1 แล้ว!");
-      } else {
-        alert("ไม่เป็นไร ลองใหม่ได้นะ 💪\nTip: เลือกบล็อกให้ตรงโจทย์");
-      }
-    }
-  </script>
+<script>
+let used = [];
 
-  <br><br>
-  <button onclick="back()">⬅ กลับหน้าหลัก</button>
+function allow(e) {
+  e.preventDefault();
+}
 
-  <script>
-    function back() {
-      window.location.href = "home.html";
-    }
-  </script>
+function drag(e) {
+  e.dataTransfer.setData("type", e.target.dataset.type);
+}
+
+function drop(e) {
+  e.preventDefault();
+  const type = e.dataTransfer.getData("type");
+  if (!used.includes(type)) {
+    used.push(type);
+    e.target.innerHTML += `<p>${type}</p>`;
+  }
+}
+
+function run() {
+  const hasTemp = used.includes("temp");
+  const hasLight = used.includes("light");
+
+  if (hasTemp && hasLight) {
+    result.innerText = "✅ พัดลมหมุน";
+    alert("เก่งมาก 🎉");
+  } else {
+    alert("ไม่เป็นไร เอาใหม่ 💪\nคำใบ้: ต้องใช้ทั้งอุณหภูมิและแสง");
+  }
+}
+</script>
+
 </body>
 </html>

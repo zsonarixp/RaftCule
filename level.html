@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>เลือกด่าน</title>
+</head>
+<body>
+  <h2>เลือกด่าน</h2>
+
+  <button onclick="play()">ด่าน 1</button>
+  <button onclick="lock()">ด่าน 2</button>
+  <button onclick="lock()">ด่าน 3</button>
+  <button onclick="lock()">ด่าน 4</button>
+  <button onclick="lock()">ด่าน 5</button>
+
+  <script>
+    function play() {
+      window.location.href = "game.html";
+    }
+    function lock() {
+      alert("🔒 ด่านนี้ยังไม่พร้อมใช้งาน");
+    }
+  </script>
+</body>
+</html>
