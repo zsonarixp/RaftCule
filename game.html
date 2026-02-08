@@ -1,19 +1,47 @@
 <!DOCTYPE html>
-<html lang="th">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Game</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <title>ด่าน 1</title>
 </head>
 <body>
+  <h2>ด่าน 1</h2>
 
-  <h1 id="levelTitle"></h1>
-  <p id="playerInfo"></p>
-  <p id="tip"></p>
+  <p>โจทย์: แสดงคำว่า <b>HELLO</b></p>
 
-  <button onclick="checkRule()">ทดสอบกฎ</button>
+  <select id="block">
+    <option value="">-- เลือกบล็อก --</option>
+    <option value="HELLO">แสดง HELLO</option>
+    <option value="HI">แสดง HI</option>
+  </select>
 
-  <script src="js/map.js"></script>
-  <script src="js/game.js"></script>
+  <button onclick="run()">รันโค้ด</button>
+
+  <h3>ผลลัพธ์:</h3>
+  <div id="output"></div>
+
+  <script>
+    function run() {
+      const block = document.getElementById("block").value;
+      const output = document.getElementById("output");
+
+      output.innerText = block;
+
+      if (block === "HELLO") {
+        alert("🎉 ผ่านด่าน 1 แล้ว!");
+      } else {
+        alert("ไม่เป็นไร ลองใหม่ได้นะ 💪\nTip: เลือกบล็อกให้ตรงโจทย์");
+      }
+    }
+  </script>
+
+  <br><br>
+  <button onclick="back()">⬅ กลับหน้าหลัก</button>
+
+  <script>
+    function back() {
+      window.location.href = "home.html";
+    }
+  </script>
 </body>
 </html>

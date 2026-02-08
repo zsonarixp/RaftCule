@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>หน้าหลัก</title>
+</head>
+<body>
+  <h2 id="welcome"></h2>
+
+  <h3>เลือกด่าน</h3>
+
+  <button onclick="goLevel(1)">ด่าน 1</button>
+  <button onclick="locked()">ด่าน 2</button>
+  <button onclick="locked()">ด่าน 3</button>
+  <button onclick="locked()">ด่าน 4</button>
+  <button onclick="locked()">ด่าน 5</button>
+
+  <script>
+    const user = localStorage.getItem("user");
+    if (!user) {
+      window.location.href = "login.html";
+    }
+    document.getElementById("welcome").innerText =
+      "ยินดีต้อนรับ " + user;
+
+    function goLevel(level) {
+      window.location.href = "game.html?level=" + level;
+    }
+
+    function locked() {
+      alert("🔒 ด่านนี้ยังไม่พร้อมใช้งาน\nกรุณาเล่นด่าน 1 ก่อน");
+    }
+  </script>
+</body>
+</html>
