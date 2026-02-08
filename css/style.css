@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  text-align: center;
+  padding: 40px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input {
+  padding: 8px;
+  font-size: 16px;
+}
+
+.character-box img {
+  width: 120px;
+  margin: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.character-box img:hover {
+  transform: scale(1.1);
+}
